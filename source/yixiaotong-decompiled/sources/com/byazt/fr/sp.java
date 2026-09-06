@@ -1,0 +1,24 @@
+package com.byazt.fr;
+
+import android.util.SparseArray;
+import com.bykv.vk.component.ttvideo.player.MediaPlayer;
+import com.bytedance.sdk.openadsdk.mediation.ad.MediationShakeViewListener;
+import java.util.function.Function;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5766332.dex */
+@com.byazt.zqa.c(c = {0, 1, 2053, MediaPlayer.MEDIA_PLAYER_OPTION_MEDIA_CODEC_AUTO_RECOVERY})
+public class sp implements Function<SparseArray<Object>, Object> {
+    private final MediationShakeViewListener c;
+
+    public sp(MediationShakeViewListener mediationShakeViewListener) {
+        this.c = mediationShakeViewListener;
+    }
+
+    @Override // java.util.function.Function
+    public Object apply(SparseArray<Object> sparseArray) {
+        if (this.c != null && com.byazt.rl.ve.c(sparseArray).tt().intValue(-99999987) == 270012) {
+            this.c.onDismissed();
+        }
+        return null;
+    }
+}

@@ -1,0 +1,31 @@
+package com.byazt.emg;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5766332.dex */
+@com.byazt.zqa.c(c = {0, 1, 1199, 15})
+public class uj extends SQLiteOpenHelper {
+    public uj(Context context) {
+        super(new com.byazt.nys.c(context), "tt_open_sdk_video.db", (SQLiteDatabase.CursorFactory) null, 3);
+    }
+
+    @Override // android.database.sqlite.SQLiteOpenHelper
+    public void onCreate(SQLiteDatabase sQLiteDatabase) {
+        sQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS video_http_header_t(_id INTEGER PRIMARY KEY AUTOINCREMENT,key TEXT,mime TEXT,contentLength INTEGER,flag INTEGER,extra TEXT)");
+    }
+
+    @Override // android.database.sqlite.SQLiteOpenHelper
+    public void onUpgrade(SQLiteDatabase sQLiteDatabase, int i, int i2) {
+        if (i == 1) {
+            sQLiteDatabase.execSQL("ALTER TABLE video_http_header_t ADD COLUMN flag INTEGER DEFAULT 0");
+            sQLiteDatabase.execSQL("ALTER TABLE video_http_header_t ADD COLUMN extra TEXT DEFAULT ''");
+        } else if (i == 2) {
+            sQLiteDatabase.execSQL("ALTER TABLE video_http_header_t ADD COLUMN extra TEXT DEFAULT ''");
+        } else {
+            sQLiteDatabase.execSQL("DROP TABLE IF EXISTS video_http_header_t");
+            onCreate(sQLiteDatabase);
+        }
+    }
+}

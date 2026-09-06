@@ -1,0 +1,736 @@
+package com.huawei.hms.ads.placement;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\6253208.dex */
+public final class R {
+
+    public static final class anim {
+        public static int hiad_anim_fade_in = 0x7f01004d;
+        public static int hiad_anim_fade_out = 0x7f01004e;
+
+        private anim() {
+        }
+    }
+
+    public static final class attr {
+        public static int alpha = 0x7f040049;
+        public static int font = 0x7f0401cf;
+        public static int fontProviderAuthority = 0x7f0401d1;
+        public static int fontProviderCerts = 0x7f0401d2;
+        public static int fontProviderFetchStrategy = 0x7f0401d3;
+        public static int fontProviderFetchTimeout = 0x7f0401d4;
+        public static int fontProviderPackage = 0x7f0401d5;
+        public static int fontProviderQuery = 0x7f0401d6;
+        public static int fontStyle = 0x7f0401d8;
+        public static int fontVariationSettings = 0x7f0401d9;
+        public static int fontWeight = 0x7f0401da;
+        public static int hiad_adId = 0x7f0401f5;
+        public static int hiad_bannerSize = 0x7f0401f6;
+        public static int hiad_roundCorner = 0x7f0401fc;
+        public static int progress_fillColor = 0x7f04049f;
+        public static int progress_innerColor = 0x7f0404a0;
+        public static int progress_maxProgress = 0x7f0404a1;
+        public static int progress_outerColor = 0x7f0404a2;
+        public static int progress_outerRadius = 0x7f0404a3;
+        public static int progress_progress = 0x7f0404a4;
+        public static int progress_progressWidth = 0x7f0404a5;
+        public static int progress_startPoint = 0x7f0404a6;
+        public static int progress_textColor = 0x7f0404a7;
+        public static int progress_textSize = 0x7f0404a8;
+        public static int trackEnable = 0x7f0405c7;
+        public static int ttcIndex = 0x7f0405d5;
+
+        private attr() {
+        }
+    }
+
+    public static final class color {
+        public static int emui_color_gray_1 = 0x7f0600b3;
+        public static int emui_color_gray_10 = 0x7f0600b4;
+        public static int emui_color_gray_7 = 0x7f0600b5;
+        public static int hiad_05_percent_black = 0x7f060136;
+        public static int hiad_0_percent_black = 0x7f060137;
+        public static int hiad_10_percent_black = 0x7f060138;
+        public static int hiad_10_percent_white = 0x7f060139;
+        public static int hiad_20_percent_black = 0x7f06013a;
+        public static int hiad_20_percent_white = 0x7f06013b;
+        public static int hiad_30_percent_black = 0x7f06013c;
+        public static int hiad_30_percent_black_adjust_uimode = 0x7f06013d;
+        public static int hiad_30_percent_white = 0x7f06013e;
+        public static int hiad_40_percent_black = 0x7f06013f;
+        public static int hiad_40_percent_white = 0x7f060140;
+        public static int hiad_50_percent_black = 0x7f060141;
+        public static int hiad_50_percent_white = 0x7f060142;
+        public static int hiad_60_percent_black = 0x7f060143;
+        public static int hiad_62_percent_black = 0x7f060144;
+        public static int hiad_70_percent_black = 0x7f060145;
+        public static int hiad_80_percent_black = 0x7f060146;
+        public static int hiad_80_percent_white = 0x7f060147;
+        public static int hiad_90_percent_black = 0x7f060148;
+        public static int hiad_90_percent_white = 0x7f060149;
+        public static int hiad_90_white = 0x7f06014a;
+        public static int hiad_activie_app_desc_color = 0x7f06014b;
+        public static int hiad_ad_source_background_color = 0x7f06014c;
+        public static int hiad_ad_source_color = 0x7f06014d;
+        public static int hiad_app_allow_install_dialog_bg = 0x7f06014e;
+        public static int hiad_app_allow_install_dialog_btn_bg = 0x7f06014f;
+        public static int hiad_app_down_installing_bg = 0x7f060150;
+        public static int hiad_app_down_installing_bg_hm = 0x7f060151;
+        public static int hiad_app_down_installing_stroke = 0x7f060152;
+        public static int hiad_app_down_installing_text = 0x7f060153;
+        public static int hiad_app_down_installing_text_icon = 0x7f060154;
+        public static int hiad_app_down_processing_backgroud = 0x7f060155;
+        public static int hiad_app_down_processing_progress = 0x7f060156;
+        public static int hiad_app_down_processing_text = 0x7f060157;
+        public static int hiad_app_down_processing_text_icon = 0x7f060158;
+        public static int hiad_app_text_color = 0x7f060159;
+        public static int hiad_black_text_color = 0x7f06015a;
+        public static int hiad_circle_fill = 0x7f06015b;
+        public static int hiad_circle_inner = 0x7f06015c;
+        public static int hiad_circle_outer = 0x7f06015d;
+        public static int hiad_circle_text = 0x7f06015e;
+        public static int hiad_continue_play_btn_text = 0x7f06015f;
+        public static int hiad_dark_mode_tag_color = 0x7f060160;
+        public static int hiad_dialog_gray_10 = 0x7f060161;
+        public static int hiad_down_btn_installing = 0x7f060162;
+        public static int hiad_down_btn_normal = 0x7f060163;
+        public static int hiad_down_btn_pressing_color = 0x7f060164;
+        public static int hiad_down_btn_process = 0x7f060165;
+        public static int hiad_down_btn_white = 0x7f060166;
+        public static int hiad_down_normal_bg = 0x7f060167;
+        public static int hiad_down_normal_bg_hm = 0x7f060168;
+        public static int hiad_down_normal_bg_press = 0x7f060169;
+        public static int hiad_down_normal_bg_press_hm = 0x7f06016a;
+        public static int hiad_down_normal_stroke = 0x7f06016b;
+        public static int hiad_down_normal_text = 0x7f06016c;
+        public static int hiad_down_normal_text_icon = 0x7f06016d;
+        public static int hiad_emui_8_btn_color = 0x7f06016e;
+        public static int hiad_emui_accent = 0x7f06016f;
+        public static int hiad_emui_black = 0x7f060170;
+        public static int hiad_emui_color_1 = 0x7f060171;
+        public static int hiad_emui_color_2 = 0x7f060172;
+        public static int hiad_emui_white = 0x7f060173;
+        public static int hiad_endcard_default_bg = 0x7f060174;
+        public static int hiad_feedback_0_percent_black = 0x7f060175;
+        public static int hiad_feedback_10_percent_black = 0x7f060176;
+        public static int hiad_feedback_60_percent_black = 0x7f060177;
+        public static int hiad_feedback_item_normal = 0x7f060178;
+        public static int hiad_feedback_item_pressed = 0x7f060179;
+        public static int hiad_feedback_mask = 0x7f06017a;
+        public static int hiad_feedback_right_arrow = 0x7f06017b;
+        public static int hiad_feedback_row_pressed = 0x7f06017c;
+        public static int hiad_feedback_text = 0x7f06017d;
+        public static int hiad_feedback_view_bg = 0x7f06017e;
+        public static int hiad_font = 0x7f06017f;
+        public static int hiad_landing_app_down_normal_bg = 0x7f060180;
+        public static int hiad_landing_app_down_normal_bg_pressed = 0x7f060181;
+        public static int hiad_line_color = 0x7f060182;
+        public static int hiad_open_btn_normal_bg = 0x7f060183;
+        public static int hiad_open_btn_pressed_bg = 0x7f060184;
+        public static int hiad_seekbar_thumb_edge_color = 0x7f060185;
+        public static int hiad_source_shadow_color = 0x7f060186;
+        public static int hiad_text_color_ad_hiden = 0x7f060187;
+        public static int hiad_transparent = 0x7f060188;
+        public static int hiad_video_buffer_progress_end = 0x7f060189;
+        public static int hiad_video_buffer_progress_start = 0x7f06018a;
+        public static int hiad_video_progress_bg = 0x7f06018b;
+        public static int hiad_video_progress_blue = 0x7f06018c;
+        public static int hiad_video_progress_buffer = 0x7f06018d;
+        public static int hiad_whythisad_btn_fb_bg_normal_color = 0x7f06018e;
+        public static int hiad_whythisad_btn_fb_bg_special_color = 0x7f06018f;
+        public static int hiad_whythisad_btn_fb_text_color = 0x7f060190;
+        public static int hiad_whythisad_btn_hide_text_color = 0x7f060191;
+        public static int hiad_whythisad_btn_why_text_color = 0x7f060192;
+        public static int hiad_whythisad_normal_bg = 0x7f060193;
+        public static int hiad_whythisad_normal_bg_pressed = 0x7f060194;
+        public static int hiad_whythisad_root_bg = 0x7f060195;
+        public static int notification_action_color_filter = 0x7f0602ae;
+        public static int notification_icon_bg_color = 0x7f0602af;
+        public static int ripple_material_light = 0x7f0602fb;
+        public static int secondary_text_default_material_light = 0x7f060305;
+
+        private color() {
+        }
+    }
+
+    public static final class dimen {
+        public static int compat_button_inset_horizontal_material = 0x7f070066;
+        public static int compat_button_inset_vertical_material = 0x7f070067;
+        public static int compat_button_padding_horizontal_material = 0x7f070068;
+        public static int compat_button_padding_vertical_material = 0x7f070069;
+        public static int compat_control_corner_material = 0x7f07006a;
+        public static int compat_notification_large_icon_max_height = 0x7f07006b;
+        public static int compat_notification_large_icon_max_width = 0x7f07006c;
+        public static int hiad_10_dp = 0x7f070104;
+        public static int hiad_12_dp = 0x7f070109;
+        public static int hiad_13_dp = 0x7f07010a;
+        public static int hiad_144_dp = 0x7f07010b;
+        public static int hiad_14_dp = 0x7f07010d;
+        public static int hiad_16_dp = 0x7f07010f;
+        public static int hiad_17_dp = 0x7f070110;
+        public static int hiad_18_dp = 0x7f070112;
+        public static int hiad_19_dp = 0x7f070114;
+        public static int hiad_1_dp = 0x7f070115;
+        public static int hiad_1_px = 0x7f070116;
+        public static int hiad_20_dp = 0x7f070117;
+        public static int hiad_22_dp = 0x7f070118;
+        public static int hiad_24_dp = 0x7f070119;
+        public static int hiad_28_dp = 0x7f07011c;
+        public static int hiad_2_dp = 0x7f07011d;
+        public static int hiad_32_dp = 0x7f070121;
+        public static int hiad_36_dp = 0x7f070123;
+        public static int hiad_3_dp = 0x7f070125;
+        public static int hiad_40_dp = 0x7f070126;
+        public static int hiad_46_dp = 0x7f07012a;
+        public static int hiad_48_dp = 0x7f07012c;
+        public static int hiad_4_dp = 0x7f07012d;
+        public static int hiad_52_dp = 0x7f07012e;
+        public static int hiad_54_dp = 0x7f07012f;
+        public static int hiad_56_dp = 0x7f070130;
+        public static int hiad_64_dp = 0x7f070132;
+        public static int hiad_66_dp = 0x7f070133;
+        public static int hiad_6_dp = 0x7f070134;
+        public static int hiad_72_dp = 0x7f070135;
+        public static int hiad_7_dp = 0x7f070136;
+        public static int hiad_8_dp = 0x7f07013a;
+        public static int hiad_9_dp = 0x7f07013c;
+        public static int hiad_alert_msg_margin_b = 0x7f07013d;
+        public static int hiad_download_button_radius = 0x7f07014a;
+        public static int hiad_download_button_stroke_processing_width = 0x7f07014b;
+        public static int hiad_download_button_stroke_width = 0x7f07014c;
+        public static int hiad_emui_master_body_1 = 0x7f07014d;
+        public static int hiad_emui_master_caption_1 = 0x7f07014e;
+        public static int hiad_emui_master_subtitle = 0x7f07014f;
+        public static int hiad_margin_l = 0x7f070157;
+        public static int hiad_margin_m = 0x7f070158;
+        public static int hiad_margin_s = 0x7f070159;
+        public static int hiad_native_video_play_btn_h = 0x7f07015a;
+        public static int hiad_native_video_play_btn_w = 0x7f07015b;
+        public static int hiad_non_wifi_alert_msg_text_margin_side = 0x7f07015c;
+        public static int hiad_non_wifi_alert_msg_text_size = 0x7f07015d;
+        public static int hiad_non_wifi_play_button_h = 0x7f07015e;
+        public static int hiad_non_wifi_play_button_w = 0x7f07015f;
+        public static int hiad_page_margin_side = 0x7f070160;
+        public static int hiad_text_12_sp = 0x7f070170;
+        public static int hiad_text_13_sp = 0x7f070171;
+        public static int hiad_text_14_sp = 0x7f070172;
+        public static int hiad_text_15_sp = 0x7f070173;
+        public static int hiad_text_16_sp = 0x7f070174;
+        public static int hiad_text_18_sp = 0x7f070175;
+        public static int hiad_text_20_sp = 0x7f070176;
+        public static int hiad_text_4_sp = 0x7f070177;
+        public static int hiad_text_6_sp = 0x7f070178;
+        public static int hiad_text_9_sp = 0x7f070179;
+        public static int hiad_video_buffering_w = 0x7f07017a;
+        public static int hiad_video_play_time_marge_l = 0x7f07017b;
+        public static int hiad_video_sound_toggle_h = 0x7f07017d;
+        public static int hiad_video_sound_toggle_w = 0x7f07017e;
+        public static int hiad_video_time_margin_b = 0x7f07017f;
+        public static int notification_action_icon_size = 0x7f07042d;
+        public static int notification_action_text_size = 0x7f07042e;
+        public static int notification_big_circle_margin = 0x7f07042f;
+        public static int notification_content_margin_start = 0x7f070430;
+        public static int notification_large_icon_height = 0x7f070431;
+        public static int notification_large_icon_width = 0x7f070432;
+        public static int notification_main_column_padding_top = 0x7f070433;
+        public static int notification_media_narrow_margin = 0x7f070434;
+        public static int notification_right_icon_size = 0x7f070435;
+        public static int notification_right_side_padding_top = 0x7f070436;
+        public static int notification_small_icon_background_padding = 0x7f070437;
+        public static int notification_small_icon_size_as_large = 0x7f070438;
+        public static int notification_subtext_size = 0x7f070439;
+        public static int notification_top_pad = 0x7f07043a;
+        public static int notification_top_pad_large_text = 0x7f07043b;
+
+        private dimen() {
+        }
+    }
+
+    public static final class drawable {
+        public static int ad_share_dialog_bg = 0x7f080063;
+        public static int hiad_arrow_down = 0x7f08016b;
+        public static int hiad_bg_ad_source = 0x7f080170;
+        public static int hiad_bg_permission_circle = 0x7f080171;
+        public static int hiad_box_checked = 0x7f080173;
+        public static int hiad_box_uncheck = 0x7f080174;
+        public static int hiad_chevron_right = 0x7f080178;
+        public static int hiad_choices_adchoice = 0x7f080179;
+        public static int hiad_choices_whythisad_x = 0x7f080181;
+        public static int hiad_default_dsp_logo = 0x7f080184;
+        public static int hiad_feedback_right_arrow = 0x7f080188;
+        public static int hiad_feedback_sharp = 0x7f080189;
+        public static int hiad_feedback_view_bg = 0x7f08018a;
+        public static int hiad_feedback_view_row = 0x7f08018b;
+        public static int hiad_hm_bg_ad_label = 0x7f08018c;
+        public static int hiad_hm_close_btn = 0x7f08018e;
+        public static int hiad_hm_info = 0x7f08018f;
+        public static int hiad_video_mute = 0x7f08019d;
+        public static int hiad_video_unmute = 0x7f08019e;
+        public static int icon_more = 0x7f0801fc;
+        public static int icon_qq = 0x7f080200;
+        public static int icon_qq_qzone = 0x7f080201;
+        public static int icon_weibo = 0x7f080203;
+        public static int icon_welink = 0x7f080204;
+        public static int icon_wx = 0x7f080205;
+        public static int icon_wx_moments = 0x7f080206;
+        public static int notification_action_background = 0x7f080405;
+        public static int notification_bg = 0x7f080406;
+        public static int notification_bg_low = 0x7f080407;
+        public static int notification_bg_low_normal = 0x7f080408;
+        public static int notification_bg_low_pressed = 0x7f080409;
+        public static int notification_bg_normal = 0x7f08040a;
+        public static int notification_bg_normal_pressed = 0x7f08040b;
+        public static int notification_icon_background = 0x7f08040c;
+        public static int notification_template_icon_bg = 0x7f08040e;
+        public static int notification_template_icon_low_bg = 0x7f08040f;
+        public static int notification_tile_bg = 0x7f080410;
+        public static int notify_panel_notification_icon_bg = 0x7f080411;
+
+        private drawable() {
+        }
+    }
+
+    public static final class id {
+        public static int accessibility_action_clickable_span = 0x7f090019;
+        public static int accessibility_custom_action_0 = 0x7f09001a;
+        public static int accessibility_custom_action_1 = 0x7f09001b;
+        public static int accessibility_custom_action_10 = 0x7f09001c;
+        public static int accessibility_custom_action_11 = 0x7f09001d;
+        public static int accessibility_custom_action_12 = 0x7f09001e;
+        public static int accessibility_custom_action_13 = 0x7f09001f;
+        public static int accessibility_custom_action_14 = 0x7f090020;
+        public static int accessibility_custom_action_15 = 0x7f090021;
+        public static int accessibility_custom_action_16 = 0x7f090022;
+        public static int accessibility_custom_action_17 = 0x7f090023;
+        public static int accessibility_custom_action_18 = 0x7f090024;
+        public static int accessibility_custom_action_19 = 0x7f090025;
+        public static int accessibility_custom_action_2 = 0x7f090026;
+        public static int accessibility_custom_action_20 = 0x7f090027;
+        public static int accessibility_custom_action_21 = 0x7f090028;
+        public static int accessibility_custom_action_22 = 0x7f090029;
+        public static int accessibility_custom_action_23 = 0x7f09002a;
+        public static int accessibility_custom_action_24 = 0x7f09002b;
+        public static int accessibility_custom_action_25 = 0x7f09002c;
+        public static int accessibility_custom_action_26 = 0x7f09002d;
+        public static int accessibility_custom_action_27 = 0x7f09002e;
+        public static int accessibility_custom_action_28 = 0x7f09002f;
+        public static int accessibility_custom_action_29 = 0x7f090030;
+        public static int accessibility_custom_action_3 = 0x7f090031;
+        public static int accessibility_custom_action_30 = 0x7f090032;
+        public static int accessibility_custom_action_31 = 0x7f090033;
+        public static int accessibility_custom_action_4 = 0x7f090034;
+        public static int accessibility_custom_action_5 = 0x7f090035;
+        public static int accessibility_custom_action_6 = 0x7f090036;
+        public static int accessibility_custom_action_7 = 0x7f090037;
+        public static int accessibility_custom_action_8 = 0x7f090038;
+        public static int accessibility_custom_action_9 = 0x7f090039;
+        public static int action_container = 0x7f090048;
+        public static int action_divider = 0x7f09004a;
+        public static int action_image = 0x7f09004b;
+        public static int action_text = 0x7f090053;
+        public static int actions = 0x7f090058;
+        public static int async = 0x7f090183;
+        public static int blocking = 0x7f0901a1;
+        public static int bottom = 0x7f0901a4;
+        public static int bottom_compliance_iv = 0x7f0901a9;
+        public static int bottom_compliance_ll = 0x7f0901aa;
+        public static int bottom_compliance_view = 0x7f0901ab;
+        public static int chronometer = 0x7f09024c;
+        public static int compliance_activity_root = 0x7f090262;
+        public static int compliance_anchor_view = 0x7f090263;
+        public static int compliance_info = 0x7f090268;
+        public static int compliance_scrollview = 0x7f090269;
+        public static int compliance_view_root = 0x7f09026a;
+        public static int content_layout = 0x7f090278;
+        public static int dialog_button = 0x7f0902ad;
+        public static int dom_dsa_view_root = 0x7f0902c8;
+        public static int dsa_scrollview = 0x7f0902dc;
+        public static int enable_service_text = 0x7f0902f0;
+        public static int forever = 0x7f090380;
+        public static int haid_down_btn_progress = 0x7f0903b8;
+        public static int haid_down_btn_progress_uiengine = 0x7f0903b9;
+        public static int hiad_ad_jump_text = 0x7f0903bd;
+        public static int hiad_ad_label = 0x7f0903be;
+        public static int hiad_ad_source = 0x7f0903c0;
+        public static int hiad_ar_group = 0x7f0903c2;
+        public static int hiad_ar_main_image = 0x7f0903c3;
+        public static int hiad_id_video_texture_view = 0x7f0903e4;
+        public static int hiad_id_video_view = 0x7f0903e5;
+        public static int hiad_loading_dialog_content_tv = 0x7f0903e8;
+        public static int hiad_permissions_dialog_child_tv = 0x7f0903f3;
+        public static int hiad_permissions_dialog_content_lv = 0x7f0903f4;
+        public static int hiad_permissions_dialog_content_title_tv = 0x7f0903f5;
+        public static int hiad_permissions_dialog_parent_tv = 0x7f0903f6;
+        public static int icon = 0x7f09042c;
+        public static int icon_group = 0x7f09042f;
+        public static int icon_more = 0x7f090430;
+        public static int icon_qq = 0x7f090431;
+        public static int icon_qq_qzone = 0x7f090432;
+        public static int icon_weLink = 0x7f090433;
+        public static int icon_weibo = 0x7f090434;
+        public static int icon_wx = 0x7f090435;
+        public static int icon_wx_moments = 0x7f090436;
+        public static int info = 0x7f09049f;
+        public static int italic = 0x7f0904ad;
+        public static int left = 0x7f09084a;
+        public static int line1 = 0x7f090885;
+        public static int line3 = 0x7f09088a;
+        public static int loading_progress = 0x7f0908c1;
+        public static int margin_view = 0x7f0908e8;
+        public static int normal = 0x7f090b56;
+        public static int notification_background = 0x7f090b5a;
+        public static int notification_main_column = 0x7f090b5c;
+        public static int notification_main_column_container = 0x7f090b5d;
+        public static int right = 0x7f090cf7;
+        public static int right_arrow = 0x7f090cfb;
+        public static int right_icon = 0x7f090cfc;
+        public static int right_side = 0x7f090cfe;
+        public static int share_activity_root = 0x7f090d58;
+        public static int share_bg = 0x7f090d59;
+        public static int share_more = 0x7f090d5a;
+        public static int share_qq = 0x7f090d5b;
+        public static int share_qq_qzone = 0x7f090d5c;
+        public static int share_weLink = 0x7f090d5d;
+        public static int share_weibo = 0x7f090d5e;
+        public static int share_wx = 0x7f090d5f;
+        public static int share_wx_moments = 0x7f090d60;
+        public static int splash_feedback_btn = 0x7f090d80;
+        public static int splash_feedback_line = 0x7f090d81;
+        public static int splash_feedback_right_arrow = 0x7f090d82;
+        public static int splash_feedback_tv = 0x7f090d83;
+        public static int tag_accessibility_actions = 0x7f090dab;
+        public static int tag_accessibility_clickable_spans = 0x7f090dac;
+        public static int tag_accessibility_heading = 0x7f090dad;
+        public static int tag_accessibility_pane_title = 0x7f090dae;
+        public static int tag_screen_reader_focusable = 0x7f090db2;
+        public static int tag_transition_group = 0x7f090db4;
+        public static int tag_unhandled_key_event_manager = 0x7f090db5;
+        public static int tag_unhandled_key_listeners = 0x7f090db6;
+        public static int text = 0x7f090dc7;
+        public static int text2 = 0x7f090dcb;
+        public static int time = 0x7f090df2;
+        public static int title = 0x7f090df9;
+        public static int top = 0x7f090e06;
+        public static int top_compliance_iv = 0x7f090e0c;
+        public static int top_compliance_ll = 0x7f090e0d;
+        public static int top_compliance_view = 0x7f090e0e;
+        public static int why_this_ad_btn = 0x7f091103;
+        public static int why_this_ad_line = 0x7f091104;
+        public static int why_this_ad_right_arrow = 0x7f091105;
+        public static int why_this_ad_tv = 0x7f091106;
+
+        private id() {
+        }
+    }
+
+    public static final class integer {
+        public static int status_bar_notification_info_maxnum = 0x7f0a003d;
+
+        private integer() {
+        }
+    }
+
+    public static final class layout {
+        public static int activity_endisable_service = 0x7f0c0094;
+        public static int bottom_share_layout = 0x7f0c0194;
+        public static int custom_dialog = 0x7f0c0198;
+        public static int hiad_activity_compliance = 0x7f0c0221;
+        public static int hiad_activity_share = 0x7f0c0223;
+        public static int hiad_ad_label_source = 0x7f0c0224;
+        public static int hiad_ad_label_source_with_click = 0x7f0c0225;
+        public static int hiad_ar_view = 0x7f0c0227;
+        public static int hiad_compliance_choice_view = 0x7f0c022d;
+        public static int hiad_domestic_dsa_view = 0x7f0c022e;
+        public static int hiad_loading_dialog_content = 0x7f0c0237;
+        public static int hiad_permission_dialog_child_item = 0x7f0c023d;
+        public static int hiad_permission_dialog_cotent = 0x7f0c023e;
+        public static int hiad_permission_dialog_parent_item = 0x7f0c023f;
+        public static int hiad_placement_pure_video_view = 0x7f0c0240;
+        public static int hiad_view_video = 0x7f0c024f;
+        public static int notification_action = 0x7f0c04b3;
+        public static int notification_action_tombstone = 0x7f0c04b4;
+        public static int notification_template_custom_big = 0x7f0c04bb;
+        public static int notification_template_icon_group = 0x7f0c04bc;
+        public static int notification_template_part_chronometer = 0x7f0c04c0;
+        public static int notification_template_part_time = 0x7f0c04c1;
+
+        private layout() {
+        }
+    }
+
+    public static final class plurals {
+        public static int hiad_dismiss_dilaog = 0x7f0f0000;
+        public static int hiad_no_prompt_in_days = 0x7f0f0001;
+        public static int hiad_reward_countdown = 0x7f0f0002;
+
+        private plurals() {
+        }
+    }
+
+    public static final class string {
+        public static int app_name = 0x7f1100d2;
+        public static int hiad_ad_experience_feedback = 0x7f11023c;
+        public static int hiad_ad_label = 0x7f11023d;
+        public static int hiad_ad_label_new = 0x7f11023e;
+        public static int hiad_appGallery = 0x7f11023f;
+        public static int hiad_app_allow_continue_btn = 0x7f110240;
+        public static int hiad_app_allow_continue_install = 0x7f110241;
+        public static int hiad_app_allow_dont_remind_again = 0x7f110242;
+        public static int hiad_app_allow_install_pure = 0x7f110243;
+        public static int hiad_app_allow_install_pure_t = 0x7f110244;
+        public static int hiad_app_allow_permi = 0x7f110245;
+        public static int hiad_app_allow_permi_t = 0x7f110246;
+        public static int hiad_app_allow_pure_mode = 0x7f110247;
+        public static int hiad_app_allow_pure_mode_t = 0x7f110248;
+        public static int hiad_app_installed = 0x7f110249;
+        public static int hiad_app_open_notification = 0x7f11024a;
+        public static int hiad_app_permission = 0x7f11024b;
+        public static int hiad_app_preorder = 0x7f11024c;
+        public static int hiad_app_preordered = 0x7f11024d;
+        public static int hiad_autoplay_mobile_network_tips = 0x7f11024e;
+        public static int hiad_back_skip_tv = 0x7f11024f;
+        public static int hiad_choices_ad_closed = 0x7f110250;
+        public static int hiad_choices_ad_no_interest = 0x7f110251;
+        public static int hiad_choices_hide = 0x7f110252;
+        public static int hiad_choices_whythisad = 0x7f110253;
+        public static int hiad_click_card_to_learn_more = 0x7f110254;
+        public static int hiad_click_card_to_open = 0x7f110255;
+        public static int hiad_click_material_open = 0x7f110256;
+        public static int hiad_click_open = 0x7f110257;
+        public static int hiad_click_open_to = 0x7f110258;
+        public static int hiad_click_to_learn_more = 0x7f110259;
+        public static int hiad_click_to_open_harmony_service = 0x7f11025a;
+        public static int hiad_click_to_open_quick_app = 0x7f11025b;
+        public static int hiad_click_to_open_wechat_mini_spec = 0x7f11025c;
+        public static int hiad_comment = 0x7f11025d;
+        public static int hiad_comments_card_collapse = 0x7f11025e;
+        public static int hiad_comments_card_like = 0x7f11025f;
+        public static int hiad_comments_card_unfold = 0x7f110260;
+        public static int hiad_confirm_download_app = 0x7f110261;
+        public static int hiad_confirm_restore_app = 0x7f110262;
+        public static int hiad_consume_data_to_play_video = 0x7f110263;
+        public static int hiad_consume_data_to_play_video_no_data_size = 0x7f110264;
+        public static int hiad_continue_browsing = 0x7f110265;
+        public static int hiad_continue_download = 0x7f110266;
+        public static int hiad_continue_download_new = 0x7f110267;
+        public static int hiad_continue_play = 0x7f110268;
+        public static int hiad_continue_to_play = 0x7f110269;
+        public static int hiad_copy_link = 0x7f11026a;
+        public static int hiad_data_size_prompt = 0x7f11026b;
+        public static int hiad_default_app_name = 0x7f11026c;
+        public static int hiad_default_skip_text = 0x7f11026d;
+        public static int hiad_default_skip_text_time = 0x7f11026e;
+        public static int hiad_detail = 0x7f11026f;
+        public static int hiad_detail_download_now = 0x7f110270;
+        public static int hiad_dialog_accept = 0x7f110271;
+        public static int hiad_dialog_allow = 0x7f110272;
+        public static int hiad_dialog_cancel = 0x7f110273;
+        public static int hiad_dialog_close = 0x7f110274;
+        public static int hiad_dialog_continue = 0x7f110275;
+        public static int hiad_dialog_dismiss = 0x7f110276;
+        public static int hiad_dialog_install_desc = 0x7f110277;
+        public static int hiad_dialog_install_source = 0x7f110278;
+        public static int hiad_dialog_ok = 0x7f110279;
+        public static int hiad_dialog_open = 0x7f11027a;
+        public static int hiad_dialog_reject = 0x7f11027b;
+        public static int hiad_dialog_title = 0x7f11027c;
+        public static int hiad_dialog_title_tip = 0x7f11027d;
+        public static int hiad_download_app_via_mobile_data = 0x7f11027e;
+        public static int hiad_download_download = 0x7f11027f;
+        public static int hiad_download_download_with_size = 0x7f110280;
+        public static int hiad_download_failed_toast_content = 0x7f110281;
+        public static int hiad_download_file_corrupted = 0x7f110282;
+        public static int hiad_download_file_not_exist = 0x7f110283;
+        public static int hiad_download_install = 0x7f110284;
+        public static int hiad_download_installing = 0x7f110285;
+        public static int hiad_download_no_space = 0x7f110286;
+        public static int hiad_download_open = 0x7f110287;
+        public static int hiad_download_resume = 0x7f110288;
+        public static int hiad_download_retry_toast_content = 0x7f110289;
+        public static int hiad_download_status_retry = 0x7f11028a;
+        public static int hiad_download_use_mobile_network = 0x7f11028b;
+        public static int hiad_download_use_mobile_network_zh = 0x7f11028c;
+        public static int hiad_fast_app_spec = 0x7f11028d;
+        public static int hiad_feedback_complaint = 0x7f11028e;
+        public static int hiad_feedback_had_feedback = 0x7f11028f;
+        public static int hiad_feedback_reduce_such_content = 0x7f110290;
+        public static int hiad_feedback_think_of_this_ad = 0x7f110291;
+        public static int hiad_focus_click = 0x7f110292;
+        public static int hiad_harmony_service_spec = 0x7f110293;
+        public static int hiad_install_completed = 0x7f110294;
+        public static int hiad_installed_description = 0x7f110295;
+        public static int hiad_installed_optimize_description = 0x7f110296;
+        public static int hiad_interception_landing_page = 0x7f110297;
+        public static int hiad_intro = 0x7f110298;
+        public static int hiad_jssdk_i18n = 0x7f110299;
+        public static int hiad_jump_desc = 0x7f11029a;
+        public static int hiad_jump_to = 0x7f11029b;
+        public static int hiad_landing_page_open_app = 0x7f11029c;
+        public static int hiad_learn_more = 0x7f11029d;
+        public static int hiad_link_already_copied = 0x7f11029e;
+        public static int hiad_loading_tips = 0x7f11029f;
+        public static int hiad_mobile_download_prompt = 0x7f1102a0;
+        public static int hiad_multi_ads_title = 0x7f1102a1;
+        public static int hiad_net_error = 0x7f1102a2;
+        public static int hiad_network_error = 0x7f1102a3;
+        public static int hiad_network_no_available = 0x7f1102a4;
+        public static int hiad_no_more_remind = 0x7f1102a5;
+        public static int hiad_non_wifi_download_prompt = 0x7f1102a6;
+        public static int hiad_non_wifi_download_prompt_zh = 0x7f1102a7;
+        public static int hiad_open_in_browser = 0x7f1102a8;
+        public static int hiad_open_to = 0x7f1102a9;
+        public static int hiad_page_load_failed = 0x7f1102aa;
+        public static int hiad_permission_dialog_title = 0x7f1102ab;
+        public static int hiad_permissions = 0x7f1102ac;
+        public static int hiad_preinstall_cancel_restore = 0x7f1102ad;
+        public static int hiad_preinstall_restore = 0x7f1102ae;
+        public static int hiad_preinstall_restore_and_open = 0x7f1102af;
+        public static int hiad_preorder_download = 0x7f1102b0;
+        public static int hiad_prepare_download = 0x7f1102b1;
+        public static int hiad_prepare_download_title = 0x7f1102b2;
+        public static int hiad_prepare_download_zh = 0x7f1102b3;
+        public static int hiad_privacy = 0x7f1102b4;
+        public static int hiad_refresh = 0x7f1102b5;
+        public static int hiad_release_time = 0x7f1102b6;
+        public static int hiad_reminder_app_over_size = 0x7f1102b7;
+        public static int hiad_reward_close_dialog_close = 0x7f1102b8;
+        public static int hiad_reward_close_dialog_continue = 0x7f1102b9;
+        public static int hiad_reward_close_dialog_message = 0x7f1102ba;
+        public static int hiad_share = 0x7f1102bb;
+        public static int hiad_share_app_not_install = 0x7f1102bc;
+        public static int hiad_share_more = 0x7f1102bd;
+        public static int hiad_share_qq = 0x7f1102be;
+        public static int hiad_share_qzone = 0x7f1102bf;
+        public static int hiad_share_weibo = 0x7f1102c0;
+        public static int hiad_share_welink = 0x7f1102c1;
+        public static int hiad_share_wx = 0x7f1102c2;
+        public static int hiad_share_wx_moments = 0x7f1102c3;
+        public static int hiad_splash_pro_desc = 0x7f1102c4;
+        public static int hiad_swipe_left_click = 0x7f1102c5;
+        public static int hiad_swipe_left_click_splice = 0x7f1102c6;
+        public static int hiad_swipe_right_click = 0x7f1102c7;
+        public static int hiad_swipe_right_click_splice = 0x7f1102c8;
+        public static int hiad_swipe_screen = 0x7f1102c9;
+        public static int hiad_swipe_screen_click = 0x7f1102ca;
+        public static int hiad_touch_jump_to = 0x7f1102cb;
+        public static int hiad_twist_screen = 0x7f1102cc;
+        public static int hiad_twist_screen_click = 0x7f1102cd;
+        public static int hiad_unsupported_function = 0x7f1102ce;
+        public static int hiad_version = 0x7f1102cf;
+        public static int hiad_video_cannot_play = 0x7f1102d0;
+        public static int hiad_video_play_consumed_traffic = 0x7f1102d1;
+        public static int hiad_video_play_internet_error = 0x7f1102d2;
+        public static int hiad_video_replay = 0x7f1102d3;
+        public static int hiad_wechat_mini_spec = 0x7f1102d5;
+        public static int hiad_whether_download = 0x7f1102d6;
+        public static int hiad_wifi_loaded_already = 0x7f1102d7;
+        public static int hiad_wifi_loaded_already_zh = 0x7f1102d8;
+        public static int hms_bindfaildlg_message = 0x7f1102dc;
+        public static int hms_bindfaildlg_title = 0x7f1102dd;
+        public static int hms_confirm = 0x7f1102de;
+        public static int hms_is_spoof = 0x7f1102df;
+        public static int hms_spoof_hints = 0x7f1102e0;
+        public static int status_bar_notification_info_overflow = 0x7f110525;
+
+        private string() {
+        }
+    }
+
+    public static final class style {
+        public static int AlertDialogLight = 0x7f120006;
+        public static int AlertDialogLight_Title = 0x7f120007;
+        public static int AlertDialogLight_buttonBar = 0x7f120008;
+        public static int Base_Translucent = 0x7f1200ee;
+        public static int HIAD_App_Allow_Install_msg_text = 0x7f12010b;
+        public static int HIAD_App_Allow_Install_title_text = 0x7f12010c;
+        public static int HIAD_Permissions_child_text = 0x7f12010d;
+        public static int HIAD_Permissions_parent_text = 0x7f12010e;
+        public static int HIAD_Permissions_title_text = 0x7f12010f;
+        public static int HIAD_ad_source_text = 0x7f120111;
+        public static int HIAD_share_dialog = 0x7f120112;
+        public static int TextAppearance_Compat_Notification = 0x7f1201ce;
+        public static int TextAppearance_Compat_Notification_Info = 0x7f1201cf;
+        public static int TextAppearance_Compat_Notification_Line2 = 0x7f1201d1;
+        public static int TextAppearance_Compat_Notification_Time = 0x7f1201d4;
+        public static int TextAppearance_Compat_Notification_Title = 0x7f1201d6;
+        public static int Widget_Compat_NotificationActionContainer = 0x7f1202c5;
+        public static int Widget_Compat_NotificationActionText = 0x7f1202c6;
+
+        private style() {
+        }
+    }
+
+    public static final class styleable {
+        public static int ColorStateListItem_alpha = 0x00000003;
+        public static int ColorStateListItem_android_alpha = 0x00000001;
+        public static int ColorStateListItem_android_color = 0x00000000;
+        public static int ColorStateListItem_android_lStar = 0x00000002;
+        public static int ColorStateListItem_lStar = 0x00000004;
+        public static int FontFamilyFont_android_font = 0x00000000;
+        public static int FontFamilyFont_android_fontStyle = 0x00000002;
+        public static int FontFamilyFont_android_fontVariationSettings = 0x00000004;
+        public static int FontFamilyFont_android_fontWeight = 0x00000001;
+        public static int FontFamilyFont_android_ttcIndex = 0x00000003;
+        public static int FontFamilyFont_font = 0x00000005;
+        public static int FontFamilyFont_fontStyle = 0x00000006;
+        public static int FontFamilyFont_fontVariationSettings = 0x00000007;
+        public static int FontFamilyFont_fontWeight = 0x00000008;
+        public static int FontFamilyFont_ttcIndex = 0x00000009;
+        public static int FontFamily_fontProviderAuthority = 0x00000000;
+        public static int FontFamily_fontProviderCerts = 0x00000001;
+        public static int FontFamily_fontProviderFetchStrategy = 0x00000002;
+        public static int FontFamily_fontProviderFetchTimeout = 0x00000003;
+        public static int FontFamily_fontProviderPackage = 0x00000004;
+        public static int FontFamily_fontProviderQuery = 0x00000005;
+        public static int FontFamily_fontProviderSystemFontFamily = 0x00000006;
+        public static int GradientColorItem_android_color = 0x00000000;
+        public static int GradientColorItem_android_offset = 0x00000001;
+        public static int GradientColor_android_centerColor = 0x00000007;
+        public static int GradientColor_android_centerX = 0x00000003;
+        public static int GradientColor_android_centerY = 0x00000004;
+        public static int GradientColor_android_endColor = 0x00000001;
+        public static int GradientColor_android_endX = 0x0000000a;
+        public static int GradientColor_android_endY = 0x0000000b;
+        public static int GradientColor_android_gradientRadius = 0x00000005;
+        public static int GradientColor_android_startColor = 0x00000000;
+        public static int GradientColor_android_startX = 0x00000008;
+        public static int GradientColor_android_startY = 0x00000009;
+        public static int GradientColor_android_tileMode = 0x00000006;
+        public static int GradientColor_android_type = 0x00000002;
+        public static int PPSBannerView_hiad_adId = 0x00000000;
+        public static int PPSBannerView_hiad_bannerSize = 0x00000001;
+        public static int PPSRoundCornerLayout_hiad_roundCorner = 0x00000000;
+        public static int hiad_circle_progress_fillColor = 0x00000000;
+        public static int hiad_circle_progress_innerColor = 0x00000001;
+        public static int hiad_circle_progress_maxProgress = 0x00000002;
+        public static int hiad_circle_progress_outerColor = 0x00000003;
+        public static int hiad_circle_progress_outerRadius = 0x00000004;
+        public static int hiad_circle_progress_progress = 0x00000005;
+        public static int hiad_circle_progress_progressWidth = 0x00000006;
+        public static int hiad_circle_progress_startPoint = 0x00000007;
+        public static int hiad_circle_progress_textColor = 0x00000008;
+        public static int hiad_circle_progress_textSize = 0x00000009;
+        public static int hiad_clicktracker_trackEnable;
+        public static int[] ColorStateListItem = {android.R.attr.color, android.R.attr.alpha, android.R.attr.lStar, 2130968649, 2130969410};
+        public static int[] FontFamily = {2130969041, 2130969042, 2130969043, 2130969044, 2130969045, 2130969046, 2130969047};
+        public static int[] FontFamilyFont = {android.R.attr.font, android.R.attr.fontWeight, android.R.attr.fontStyle, android.R.attr.ttcIndex, android.R.attr.fontVariationSettings, 2130969039, 2130969048, 2130969049, 2130969050, 2130970069};
+        public static int[] GradientColor = {android.R.attr.startColor, android.R.attr.endColor, android.R.attr.type, android.R.attr.centerX, android.R.attr.centerY, android.R.attr.gradientRadius, android.R.attr.tileMode, android.R.attr.centerColor, android.R.attr.startX, android.R.attr.startY, android.R.attr.endX, android.R.attr.endY};
+        public static int[] GradientColorItem = {android.R.attr.color, android.R.attr.offset};
+        public static int[] PPSBannerView = {2130969077, 2130969078};
+        public static int[] PPSRoundCornerLayout = {2130969084};
+        public static int[] hiad_circle = {2130969759, 2130969760, 2130969761, 2130969762, 2130969763, 2130969764, 2130969765, 2130969766, 2130969767, 2130969768};
+        public static int[] hiad_clicktracker = {2130970055};
+
+        private styleable() {
+        }
+    }
+
+    public static final class xml {
+        public static int filepaths = 0x7f140005;
+
+        private xml() {
+        }
+    }
+
+    private R() {
+    }
+}

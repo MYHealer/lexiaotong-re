@@ -1,0 +1,12 @@
+# APK (74MB, too large for GitHub)
+lexiaotong.apk
+
+# Token file
+.lexiaotong_token
+
+# Duplicate decompiled source (subset of yixiaotong-decompiled/)
+source/sources/
+
+# Python
+__pycache__/
+*.pyc

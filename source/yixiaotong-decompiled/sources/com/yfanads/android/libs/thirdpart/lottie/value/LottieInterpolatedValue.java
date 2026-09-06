@@ -1,0 +1,28 @@
+package com.yfanads.android.libs.thirdpart.lottie.value;
+
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\7497320.dex */
+abstract class LottieInterpolatedValue<T> extends LottieValueCallback<T> {
+    private final T endValue;
+    private final Interpolator interpolator;
+    private final T startValue;
+
+    public LottieInterpolatedValue(T t, T t2) {
+        this(t, t2, new LinearInterpolator());
+    }
+
+    public LottieInterpolatedValue(T t, T t2, Interpolator interpolator) {
+        this.startValue = t;
+        this.endValue = t2;
+        this.interpolator = interpolator;
+    }
+
+    @Override // com.yfanads.android.libs.thirdpart.lottie.value.LottieValueCallback
+    public T getValue(LottieFrameInfo<T> lottieFrameInfo) {
+        return interpolateValue(this.startValue, this.endValue, this.interpolator.getInterpolation(lottieFrameInfo.getOverallProgress()));
+    }
+
+    public abstract T interpolateValue(T t, T t2, float f);
+}

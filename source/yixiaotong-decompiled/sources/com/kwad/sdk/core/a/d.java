@@ -1,0 +1,41 @@
+package com.kwad.sdk.core.a;
+
+import com.kwad.sdk.components.DevelopMangerComponents;
+import java.util.Map;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\6393804.dex */
+public final class d {
+    private static h aSF;
+
+    public static void h(Map<String, String> map) {
+        qR().h(map);
+    }
+
+    public static String ax(String str) {
+        return qR().ax(str);
+    }
+
+    public static String getResponseData(String str) {
+        com.kwad.sdk.components.d.f(DevelopMangerComponents.class);
+        return qR().getResponseData(str);
+    }
+
+    public static void a(String str, Map<String, String> map, String str2) {
+        qR().a(str, map, str2);
+    }
+
+    private static h qR() {
+        h hVar = aSF;
+        if (hVar != null) {
+            return hVar;
+        }
+        com.kwad.sdk.components.h hVar2 = (com.kwad.sdk.components.h) com.kwad.sdk.components.d.f(com.kwad.sdk.components.h.class);
+        if (hVar2 != null) {
+            hVar2.qR();
+            aSF = hVar2.qR();
+        } else {
+            aSF = new a();
+        }
+        return aSF;
+    }
+}

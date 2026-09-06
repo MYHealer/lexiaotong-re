@@ -1,0 +1,38 @@
+package com.qihoo.bugreport.javacrash;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\93504.dex */
+public enum ReportField {
+    t,
+    cpv,
+    mpv,
+    st,
+    ct,
+    m1,
+    m,
+    ab,
+    vm,
+    k,
+    o,
+    sv,
+    l,
+    cd,
+    pn,
+    vn,
+    vc,
+    amf,
+    s,
+    r,
+    ak,
+    aid,
+    me,
+    et,
+    ec,
+    em,
+    ep,
+    ed,
+    epd,
+    crd,
+    rt,
+    sc,
+    jc
+}

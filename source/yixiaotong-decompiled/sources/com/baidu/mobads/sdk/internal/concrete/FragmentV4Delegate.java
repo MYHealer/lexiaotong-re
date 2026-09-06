@@ -1,0 +1,190 @@
+package com.baidu.mobads.sdk.internal.concrete;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
+import com.baidu.mobads.sdk.api.IAdInterListener;
+import com.baidu.mobads.sdk.internal.a.a;
+import com.baidu.mobads.sdk.internal.a.e;
+import java.util.Map;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5766332.dex */
+public class FragmentV4Delegate extends Fragment implements a {
+
+    /* JADX INFO: renamed from: a, reason: collision with root package name */
+    private e f1778a;
+    private IAdInterListener b;
+
+    @Override // com.baidu.mobads.sdk.internal.a.a
+    public Object handleEvent(String str, String str2, Object[] objArr) {
+        return null;
+    }
+
+    public FragmentV4Delegate setDispatcher(IAdInterListener iAdInterListener) {
+        this.b = iAdInterListener;
+        return this;
+    }
+
+    public void setProxy(e eVar) {
+        this.f1778a = eVar;
+        eVar.a(this.b);
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.a(context);
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.a(bundle);
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public View onCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            return eVar.a(layoutInflater, viewGroup, bundle);
+        }
+        return super.onCreateView(layoutInflater, viewGroup, bundle);
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.b(bundle);
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onStart() {
+        super.onStart();
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.a();
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onResume() {
+        super.onResume();
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.b();
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onPause() {
+        super.onPause();
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.c();
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onStop() {
+        super.onStop();
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.d();
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onDestroyView() {
+        super.onDestroyView();
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.e();
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onDestroy() {
+        super.onDestroy();
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.f();
+        }
+    }
+
+    @Override // androidx.fragment.app.Fragment
+    public void onDetach() {
+        super.onDetach();
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.g();
+        }
+    }
+
+    @Override // com.baidu.mobads.sdk.internal.a.a
+    public IAdInterListener getDelegator() {
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            return eVar.getDelegator();
+        }
+        return null;
+    }
+
+    @Override // com.baidu.mobads.sdk.api.IOAdEvent
+    public void setTarget(Object obj) {
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            eVar.setTarget(obj);
+        }
+    }
+
+    @Override // com.baidu.mobads.sdk.api.IOAdEvent
+    public Object getTarget() {
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            return eVar.getTarget();
+        }
+        return null;
+    }
+
+    @Override // com.baidu.mobads.sdk.api.IOAdEvent
+    public String getType() {
+        e eVar = this.f1778a;
+        return eVar != null ? eVar.getType() : "";
+    }
+
+    @Override // com.baidu.mobads.sdk.api.IOAdEvent
+    public int getCode() {
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            return eVar.getCode();
+        }
+        return 0;
+    }
+
+    @Override // com.baidu.mobads.sdk.api.IOAdEvent
+    public String getMessage() {
+        e eVar = this.f1778a;
+        return eVar != null ? eVar.getMessage() : "";
+    }
+
+    @Override // com.baidu.mobads.sdk.api.IOAdEvent
+    public Map<String, Object> getData() {
+        e eVar = this.f1778a;
+        if (eVar != null) {
+            return eVar.getData();
+        }
+        return null;
+    }
+}

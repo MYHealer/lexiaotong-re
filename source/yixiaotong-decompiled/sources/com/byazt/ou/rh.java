@@ -1,0 +1,6 @@
+package com.byazt.ou;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5766332.dex */
+public interface rh {
+    byte[] c(byte[] bArr, int i);
+}

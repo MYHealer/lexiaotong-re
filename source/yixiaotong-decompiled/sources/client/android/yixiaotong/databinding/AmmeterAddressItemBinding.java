@@ -1,0 +1,47 @@
+package client.android.yixiaotong.databinding;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
+import client.android.yixiaotong.R;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\6847780.dex */
+public final class AmmeterAddressItemBinding implements ViewBinding {
+    public final TextView name;
+    private final LinearLayout rootView;
+
+    @Override // androidx.viewbinding.ViewBinding
+    public LinearLayout getRoot() {
+        return this.rootView;
+    }
+
+    private AmmeterAddressItemBinding(LinearLayout linearLayout, TextView textView) {
+        this.rootView = linearLayout;
+        this.name = textView;
+    }
+
+    public static AmmeterAddressItemBinding inflate(LayoutInflater layoutInflater) {
+        return inflate(layoutInflater, null, false);
+    }
+
+    public static AmmeterAddressItemBinding inflate(LayoutInflater layoutInflater, ViewGroup viewGroup, boolean z) {
+        View viewInflate = layoutInflater.inflate(R.layout.ammeter_address_item, viewGroup, false);
+        if (z) {
+            viewGroup.addView(viewInflate);
+        }
+        return bind(viewInflate);
+    }
+
+    public static AmmeterAddressItemBinding bind(View view) {
+        int i = R.id.name;
+        TextView textView = (TextView) ViewBindings.findChildViewById(view, i);
+        if (textView != null) {
+            return new AmmeterAddressItemBinding((LinearLayout) view, textView);
+        }
+        throw new NullPointerException("Missing required view with ID: ".concat(view.getResources().getResourceName(i)));
+    }
+}

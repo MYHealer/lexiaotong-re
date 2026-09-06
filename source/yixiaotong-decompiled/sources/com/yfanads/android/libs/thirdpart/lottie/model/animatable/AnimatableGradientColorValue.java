@@ -1,0 +1,24 @@
+package com.yfanads.android.libs.thirdpart.lottie.model.animatable;
+
+import com.yfanads.android.libs.thirdpart.lottie.animation.keyframe.BaseKeyframeAnimation;
+import com.yfanads.android.libs.thirdpart.lottie.animation.keyframe.GradientColorKeyframeAnimation;
+import com.yfanads.android.libs.thirdpart.lottie.model.content.GradientColor;
+import com.yfanads.android.libs.thirdpart.lottie.value.Keyframe;
+import java.util.List;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\7497320.dex */
+public class AnimatableGradientColorValue extends BaseAnimatableValue<GradientColor, GradientColor> {
+    public AnimatableGradientColorValue(List<Keyframe<GradientColor>> list) {
+        super((List) list);
+    }
+
+    @Override // com.yfanads.android.libs.thirdpart.lottie.model.animatable.AnimatableValue
+    public BaseKeyframeAnimation<GradientColor, GradientColor> createAnimation() {
+        return new GradientColorKeyframeAnimation(this.keyframes);
+    }
+
+    @Override // com.yfanads.android.libs.thirdpart.lottie.model.animatable.BaseAnimatableValue
+    public /* bridge */ /* synthetic */ String toString() {
+        return super.toString();
+    }
+}

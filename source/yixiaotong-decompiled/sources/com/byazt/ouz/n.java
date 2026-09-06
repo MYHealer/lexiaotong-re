@@ -1,0 +1,119 @@
+package com.byazt.ouz;
+
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.byazt.aas.pf;
+import com.byazt.ete.ic;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5766332.dex */
+@com.byazt.zqa.c(c = {0, 1, 27, 46})
+public class n extends com.byazt.hkv.c {
+    public com.byazt.ete.gr da;
+    public boolean sl;
+    public int t;
+    public int u;
+    public int yp;
+
+    @Override // com.byazt.hkv.uj
+    public void c(com.byazt.ete.gr grVar) {
+        this.da = grVar;
+    }
+
+    @Override // com.byazt.hkv.uj
+    public void n(int i) {
+        this.t = i;
+    }
+
+    @Override // com.byazt.hkv.uj
+    public void uj() {
+        this.yp = 1;
+        this.sl = false;
+    }
+
+    @Override // com.byazt.hkv.uj
+    public void ve() {
+        this.u = 1;
+        this.sl = false;
+    }
+
+    public n(Context context, ic icVar, String str, int i) {
+        super(context, icVar, str, i);
+        this.t = 0;
+        this.u = -1;
+        this.yp = -1;
+        this.sl = true;
+        if (icVar == null) {
+            return;
+        }
+        com.byazt.rv.c.c().c(icVar.hashCode() + icVar.qy()).put("is_express_ad", Boolean.TRUE);
+    }
+
+    @Override // com.byazt.hkv.tt, com.byazt.hkv.uj
+    public void c(View view, com.byazt.ete.da daVar) {
+        com.byazt.vis.c cVar = (com.byazt.vis.c) c(com.byazt.vis.c.class);
+        cVar.c(c(cVar.ve(), daVar == null ? (byte) 0 : daVar.tt()));
+        super.c(view, daVar);
+    }
+
+    public com.byazt.ete.i c(String str, byte b) {
+        int i;
+        int i2;
+        String str2;
+        String str3;
+        String str4;
+        String str5;
+        int iVe;
+        int iVe2;
+        View viewDa = this.sp.da();
+        int[] iArrC = pf.c(viewDa);
+        if (iArrC == null || iArrC.length != 2) {
+            i = 0;
+            i2 = 0;
+        } else {
+            i = iArrC[0];
+            i2 = iArrC[1];
+            if (this.t == 0 && this.sl) {
+                this.sp.c((pf.ve(this.f2294a, this.sp.nu()) + i) - 0.5f);
+                this.sp.tt((pf.ve(this.f2294a, this.sp.rh()) + i2) - 0.5f);
+                this.sp.ve((pf.ve(this.f2294a, this.sp.my()) + i) - 0.5f);
+                this.sp.uj((pf.ve(this.f2294a, this.sp.gt()) + i2) - 0.5f);
+            }
+        }
+        int[] iArrC2 = {-1, -1};
+        int[] iArrVe = new int[2];
+        if (this.da == null || !this.sl) {
+            str2 = "";
+            str3 = str;
+            str4 = "";
+            str5 = str4;
+        } else {
+            this.sp.c(this.da.n);
+            this.sp.tt(this.da.f2173a);
+            if (this.t == 0) {
+                iArrC2[0] = pf.ve(this.f2294a, this.da.sp) + i;
+                iArrC2[1] = pf.ve(this.f2294a, this.da.x) + i2;
+                iVe = pf.ve(this.f2294a, this.da.i);
+                iVe2 = pf.ve(this.f2294a, this.da.da);
+            } else {
+                iArrC2[0] = this.da.sp;
+                iArrC2[1] = this.da.x;
+                iVe = this.da.i;
+                iVe2 = this.da.da;
+            }
+            str3 = TextUtils.isEmpty(str) ? this.da.sl : str;
+            str2 = this.da.t;
+            str4 = this.da.u;
+            str5 = this.da.yp;
+            iArrVe[0] = iVe;
+            iArrVe[1] = iVe2;
+            View viewI = this.sp.i();
+            if (iVe == 0 && iVe2 == 0 && viewI != null) {
+                iArrC2 = pf.c(viewI);
+                iArrVe = pf.ve(viewI);
+            }
+        }
+        this.t = 0;
+        return new com.byazt.ete.i.c().a(this.sp.nu()).n(this.sp.rh()).uj(this.sp.my()).ve(this.sp.gt()).tt(this.sp.z()).c(this.sp.m()).tt(iArrC).c(iArrC2).ve(pf.ve(viewDa)).uj(iArrVe).uj(this.sp.n()).n(this.sp.a()).a(this.sp.sp()).ve(com.byazt.omf.x.m().tt() ? 1 : 2).c(this.sp.u()).c(str3).tt(str4).ve(str2).uj(str5).c(pf.a(this.f2294a)).tt(((com.byazt.dna.u) com.byazt.ut.uj.getService("device_info_new")).getDisplayDpi()).sp(this.u).x(this.yp).tt(pf.sp(this.f2294a)).n(this.sp.rl()).i(this.sp.qy()).tt(b).c(this.sp.ve()).c(com.byazt.wz.x.tt(this.c)).c();
+    }
+}

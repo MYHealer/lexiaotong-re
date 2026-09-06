@@ -1,0 +1,8 @@
+package com.fancy;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\6258816.dex */
+public class _pg {
+    public _pg() {
+        System.currentTimeMillis();
+    }
+}

@@ -1,0 +1,8 @@
+package com.kwad.components.offline.api.core.video.listener;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\6393804.dex */
+public interface OfflineVideoPlayStateListener extends OfflineMediaPlayStateListener {
+    void onVideoPlayBufferingPaused();
+
+    void onVideoPlayBufferingPlaying();
+}

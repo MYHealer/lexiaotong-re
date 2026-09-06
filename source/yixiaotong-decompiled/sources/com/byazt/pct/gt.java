@@ -1,0 +1,104 @@
+package com.byazt.pct;
+
+import android.net.Uri;
+import client.android.yixiaotong.v3.comman.AppTypeIdUtil;
+import com.bykv.vk.component.ttvideo.player.MediaPlayer;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5941276.dex */
+@com.byazt.zqa.c(c = {0, 1, AppTypeIdUtil.NewDevice4GDrinkOTA_1, MediaPlayer.MEDIA_PLAYER_OPTION_LOOP_PERFER_VIDEO})
+public class gt {
+    public final Set<String> c;
+    public sl.tt n;
+    public final Set<String> tt;
+    public final rl uj;
+    public final qy ve = nu.c;
+
+    public void c(sl.tt ttVar) {
+        this.n = ttVar;
+    }
+
+    public gt(rl rlVar, Set<String> set, Set<String> set2) {
+        this.uj = rlVar;
+        if (set == null || set.isEmpty()) {
+            this.c = new LinkedHashSet();
+        } else {
+            this.c = new LinkedHashSet(set);
+        }
+        if (set2 == null || set2.isEmpty()) {
+            this.tt = new LinkedHashSet();
+        } else {
+            this.tt = new LinkedHashSet(set2);
+        }
+    }
+
+    public final synchronized gu c(boolean z, String str, tt ttVar) throws rl.c {
+        gu guVarTt;
+        sl.tt ttVar2;
+        Uri uri = Uri.parse(str);
+        String host = uri.getHost();
+        if (host == null) {
+            return null;
+        }
+        gu guVar = this.tt.contains(ttVar.c()) ? gu.PUBLIC : null;
+        for (String str2 : this.c) {
+            if (uri.getHost().equals(str2) || host.endsWith(".".concat(String.valueOf(str2)))) {
+                guVar = gu.PRIVATE;
+                break;
+            }
+        }
+        if (guVar == null && (ttVar2 = this.n) != null && ttVar2.c(str)) {
+            if (this.n.c(str, ttVar.c())) {
+                return null;
+            }
+            guVar = gu.PRIVATE;
+        }
+        if (z) {
+            guVarTt = c(str, ttVar);
+        } else {
+            guVarTt = tt(str, ttVar);
+        }
+        return guVarTt != null ? guVarTt : guVar;
+    }
+
+    public final synchronized gu c(String str, tt ttVar) throws rl.c {
+        return c(str, ttVar, true);
+    }
+
+    public final synchronized gu tt(String str, tt ttVar) {
+        return c(str, ttVar, false);
+    }
+
+    public void c(qy.c cVar) {
+        qy qyVar = this.ve;
+        if (qyVar != null) {
+            qyVar.c(cVar);
+        }
+    }
+
+    public void tt(qy.c cVar) {
+        qy qyVar = this.ve;
+        if (qyVar != null) {
+            qyVar.tt(cVar);
+        }
+    }
+
+    private gu c(String str, tt ttVar, boolean z) {
+        rl rlVar;
+        if (!z || (rlVar = this.uj) == null) {
+            return null;
+        }
+        rl.ve veVarC = rlVar.c(str, this.c);
+        if (veVarC.ve.contains(ttVar.c())) {
+            return null;
+        }
+        if (veVarC.tt.contains(ttVar.c())) {
+            return gu.PRIVATE;
+        }
+        if (veVarC.c.compareTo(ttVar.tt()) < 0) {
+            return null;
+        }
+        return veVarC.c;
+    }
+}

@@ -1,0 +1,69 @@
+package com.kwad.components.offline.api.core.adlive.model;
+
+import com.cdo.oaps.ad.OapsKey;
+import com.huawei.hms.ads.ld;
+import com.kwad.components.offline.api.core.model.BaseOfflineCompoJsonParse;
+import com.kwad.sdk.utils.ac;
+import java.io.Serializable;
+import org.json.JSONObject;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\6393804.dex */
+public class KSAdLiveRoomItemInfo extends BaseOfflineCompoJsonParse<KSAdLiveRoomItemInfo> implements Serializable {
+    private static final long serialVersionUID = -6149616231567033413L;
+    public String imageUrl;
+    public String itemId;
+    public String price;
+    public String title;
+
+    @Override // com.kwad.components.offline.api.core.model.BaseOfflineCompoJsonParse
+    public void parseJson(KSAdLiveRoomItemInfo kSAdLiveRoomItemInfo, JSONObject jSONObject) {
+        if (jSONObject == null) {
+            return;
+        }
+        kSAdLiveRoomItemInfo.itemId = jSONObject.optString("itemId");
+        if (jSONObject.opt("itemId") == JSONObject.NULL) {
+            kSAdLiveRoomItemInfo.itemId = "";
+        }
+        kSAdLiveRoomItemInfo.imageUrl = jSONObject.optString(ld.f3875a);
+        if (jSONObject.opt(ld.f3875a) == JSONObject.NULL) {
+            kSAdLiveRoomItemInfo.imageUrl = "";
+        }
+        kSAdLiveRoomItemInfo.title = jSONObject.optString("title");
+        if (jSONObject.opt("title") == JSONObject.NULL) {
+            kSAdLiveRoomItemInfo.title = "";
+        }
+        kSAdLiveRoomItemInfo.price = jSONObject.optString("templateVersion");
+        if (jSONObject.opt(OapsKey.KEY_PRICE) == JSONObject.NULL) {
+            kSAdLiveRoomItemInfo.price = "";
+        }
+    }
+
+    @Override // com.kwad.components.offline.api.core.model.BaseOfflineCompoJsonParse
+    public JSONObject toJson(KSAdLiveRoomItemInfo kSAdLiveRoomItemInfo, JSONObject jSONObject) {
+        if (jSONObject == null) {
+            jSONObject = new JSONObject();
+        }
+        String str = kSAdLiveRoomItemInfo.itemId;
+        if (str != null && !str.equals("")) {
+            ac.putValue(jSONObject, "itemId", kSAdLiveRoomItemInfo.itemId);
+        }
+        String str2 = kSAdLiveRoomItemInfo.imageUrl;
+        if (str2 != null && !str2.equals("")) {
+            ac.putValue(jSONObject, ld.f3875a, kSAdLiveRoomItemInfo.imageUrl);
+        }
+        String str3 = kSAdLiveRoomItemInfo.title;
+        if (str3 != null && !str3.equals("")) {
+            ac.putValue(jSONObject, "title", kSAdLiveRoomItemInfo.title);
+        }
+        String str4 = kSAdLiveRoomItemInfo.price;
+        if (str4 != null && !str4.equals("")) {
+            ac.putValue(jSONObject, OapsKey.KEY_PRICE, kSAdLiveRoomItemInfo.price);
+        }
+        return jSONObject;
+    }
+
+    @Override // com.kwad.components.offline.api.core.model.BaseOfflineCompoJsonParse
+    public JSONObject toJson(KSAdLiveRoomItemInfo kSAdLiveRoomItemInfo) {
+        return toJson(kSAdLiveRoomItemInfo, (JSONObject) null);
+    }
+}

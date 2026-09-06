@@ -1,0 +1,16 @@
+package com.byazt.ym;
+
+import android.text.TextUtils;
+import android.util.Base64;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5941276.dex */
+@com.byazt.zqa.c(c = {0, 1, 799, 54})
+public class ve {
+    public static String c(String str) {
+        return TextUtils.isEmpty(str) ? "" : Base64.encodeToString(str.getBytes(), 10);
+    }
+
+    public static String tt(String str) {
+        return TextUtils.isEmpty(str) ? "" : new String(Base64.decode(str, 10));
+    }
+}

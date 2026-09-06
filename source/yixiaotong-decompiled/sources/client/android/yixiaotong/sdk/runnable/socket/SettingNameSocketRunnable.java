@@ -1,0 +1,301 @@
+package client.android.yixiaotong.sdk.runnable.socket;
+
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.TextView;
+import client.android.yixiaotong.sdk.bluetooth.BluetoothDevice;
+import client.android.yixiaotong.sdk.bluetooth.socket.Device;
+import client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth;
+import client.android.yixiaotong.sdk.bluetooth.utils.BluetoothUtils;
+import client.android.yixiaotong.sdk.core.CommandUtilsWrapper;
+import client.android.yixiaotong.sdk.runnable.TimeOut;
+import client.android.yixiaotong.sdk.runnable.listener.SettingNameListener;
+import client.android.yixiaotong.sdk.utils.ClientException;
+import client.android.yixiaotong.sdk.utils.HexString;
+import client.android.yixiaotong.sdk.utils.IntegerUtils;
+import client.android.yixiaotong.sdk.utils.executor.MainThreadExecutor;
+import java.util.Arrays;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\6847780.dex */
+public class SettingNameSocketRunnable {
+    private boolean isRunning;
+    private Context mContext;
+    private TimeOut mCurrentCheckTimeOut;
+    private BluetoothDevice mCurrentHardware;
+    private TextView mLogTextView;
+    private String mName;
+    private SettingNameListener mSettingNameListener;
+    private SmoothBluetooth mSmoothBluetooth;
+    private SmoothBluetooth.Listener mSmoothBluetoothListener = new SmoothBluetooth.Listener() { // from class: client.android.yixiaotong.sdk.runnable.socket.SettingNameSocketRunnable.6
+        public StringBuilder stringBuilder;
+        private byte[] mLastCharacteristicData = null;
+        public int leftCount = 0;
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onBluetoothNotEnabled() {
+        }
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onBluetoothNotSupported() {
+        }
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onConnecting(Device device) {
+        }
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onConnectionFailed(Device device) {
+        }
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onDeviceFound(Device device) {
+        }
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onDisconnected() {
+        }
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onDiscoveryFinished() {
+        }
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onDiscoveryStarted() {
+        }
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onConnected(Device device) {
+            String address = device.getAddress();
+            if (address == null || SettingNameSocketRunnable.this.mCurrentHardware == null || !address.equals(SettingNameSocketRunnable.this.mCurrentHardware.address) || SettingNameSocketRunnable.this.mCurrentHardware.isTimeout || !SettingNameSocketRunnable.this.isRunning) {
+                return;
+            }
+            SettingNameSocketRunnable.this.checkTimeOut(TimeOut.SendGetDeviceSettingCommand, 1500);
+            SettingNameSocketRunnable.this.mSmoothBluetooth.send(HexString.hexToBuffer(CommandUtilsWrapper.getReturnSettingCommand()));
+        }
+
+        @Override // client.android.yixiaotong.sdk.bluetooth.socket.SmoothBluetooth.Listener
+        public void onDataReceived(byte[] bArr) {
+            if (SettingNameSocketRunnable.this.mCurrentHardware.isTimeout || !SettingNameSocketRunnable.this.isRunning) {
+                return;
+            }
+            readData(bArr);
+        }
+
+        private void readData(byte[] bArr) {
+            StringBuilder sb;
+            byte[] bArr2 = this.mLastCharacteristicData;
+            if (bArr2 == null || !Arrays.equals(bArr2, bArr)) {
+                this.mLastCharacteristicData = bArr;
+                String strBufferToHex = HexString.bufferToHex(bArr);
+                if (!strBufferToHex.startsWith("550001") || strBufferToHex.length() < 8) {
+                    StringBuilder sb2 = this.stringBuilder;
+                    if (sb2 == null) {
+                        return;
+                    }
+                    sb2.append(strBufferToHex);
+                    this.leftCount -= strBufferToHex.length();
+                } else {
+                    StringBuilder sb3 = new StringBuilder();
+                    this.stringBuilder = sb3;
+                    sb3.append(strBufferToHex);
+                    byte[] bArrHexToBuffer = HexString.hexToBuffer(strBufferToHex.substring(6, 8));
+                    byte[] bArr3 = new byte[4];
+                    System.arraycopy(bArrHexToBuffer, 0, bArr3, 4 - bArrHexToBuffer.length, bArrHexToBuffer.length);
+                    this.leftCount = ((IntegerUtils.bytesToInt2(bArr3, 0) - 1) * 2) - (strBufferToHex.length() - 6);
+                }
+                if (this.leftCount > 0 || (sb = this.stringBuilder) == null) {
+                    return;
+                }
+                byte[] bArrHexToBuffer2 = HexString.hexToBuffer(sb.toString());
+                this.stringBuilder = null;
+                if (CommandUtilsWrapper.isReturnSettingResult(bArrHexToBuffer2)) {
+                    if (!CommandUtilsWrapper.getReturnSettingResultStatus(bArrHexToBuffer2)) {
+                        SettingNameSocketRunnable settingNameSocketRunnable = SettingNameSocketRunnable.this;
+                        settingNameSocketRunnable.callOnFail(settingNameSocketRunnable.mCurrentHardware, null);
+                        return;
+                    }
+                    String returnSettingDeviceIdResult = CommandUtilsWrapper.getReturnSettingDeviceIdResult(bArrHexToBuffer2);
+                    if (TextUtils.isEmpty(returnSettingDeviceIdResult) || !returnSettingDeviceIdResult.startsWith("0212")) {
+                        SettingNameSocketRunnable settingNameSocketRunnable2 = SettingNameSocketRunnable.this;
+                        settingNameSocketRunnable2.callOnFail(settingNameSocketRunnable2.mCurrentHardware, null);
+                        return;
+                    } else {
+                        SettingNameSocketRunnable.this.checkTimeOut(TimeOut.WriteSetting, 1500);
+                        SettingNameSocketRunnable.this.mSmoothBluetooth.send(HexString.hexToBuffer(CommandUtilsWrapper.setAddressCommand(SettingNameSocketRunnable.this.mName)));
+                        return;
+                    }
+                }
+                if (CommandUtilsWrapper.isReturnSetDeviceName(bArrHexToBuffer2)) {
+                    if (CommandUtilsWrapper.getSettingnameResultStatus(bArrHexToBuffer2)) {
+                        SettingNameSocketRunnable settingNameSocketRunnable3 = SettingNameSocketRunnable.this;
+                        settingNameSocketRunnable3.callOnSuccess(settingNameSocketRunnable3.mCurrentHardware);
+                    } else {
+                        SettingNameSocketRunnable settingNameSocketRunnable4 = SettingNameSocketRunnable.this;
+                        settingNameSocketRunnable4.callOnFail(settingNameSocketRunnable4.mCurrentHardware, null);
+                    }
+                }
+            }
+        }
+    };
+
+    public boolean isRunning() {
+        return this.isRunning;
+    }
+
+    public void setLogTextView(TextView textView) {
+        this.mLogTextView = textView;
+    }
+
+    public void setSettingNameListener(SettingNameListener settingNameListener) {
+        this.mSettingNameListener = settingNameListener;
+    }
+
+    public SettingNameSocketRunnable(Context context, BluetoothDevice bluetoothDevice, String str) {
+        this.mContext = context;
+        this.mCurrentHardware = bluetoothDevice;
+        this.mName = str;
+    }
+
+    public void start() {
+        if (this.isRunning) {
+            return;
+        }
+        this.isRunning = true;
+        this.mCurrentCheckTimeOut = null;
+        callOnStart(this.mCurrentHardware);
+        if (BluetoothUtils.isBluetoothOn(this.mContext) && BluetoothUtils.isBond(this.mContext, this.mCurrentHardware.address)) {
+            closeGatt();
+            this.mCurrentHardware.isTimeout = false;
+            checkTimeOut(TimeOut.Connect, 5000);
+            SmoothBluetooth smoothBluetooth = new SmoothBluetooth(this.mContext, this.mSmoothBluetoothListener);
+            this.mSmoothBluetooth = smoothBluetooth;
+            smoothBluetooth.connect(new Device(this.mCurrentHardware.name, this.mCurrentHardware.address, true));
+            return;
+        }
+        callOnBluetoothException(new ClientException("蓝牙不可用或不支持BLE"));
+    }
+
+    public void stopAndRelease() {
+        this.isRunning = false;
+        this.mCurrentCheckTimeOut = null;
+        this.mCurrentHardware.isTimeout = false;
+        closeGatt();
+    }
+
+    private void closeGatt() {
+        SmoothBluetooth smoothBluetooth = this.mSmoothBluetooth;
+        if (smoothBluetooth != null) {
+            try {
+                smoothBluetooth.cancelDiscovery();
+            } catch (Exception unused) {
+            }
+            try {
+                this.mSmoothBluetooth.disconnect();
+            } catch (Exception unused2) {
+            }
+            try {
+                this.mSmoothBluetooth.stop();
+            } catch (Exception unused3) {
+            }
+            this.mSmoothBluetooth = null;
+        }
+    }
+
+    private void appendLog(final String str) {
+        if (this.mLogTextView == null) {
+            return;
+        }
+        MainThreadExecutor.getInstance().execute(new Runnable() { // from class: client.android.yixiaotong.sdk.runnable.socket.SettingNameSocketRunnable.1
+            @Override // java.lang.Runnable
+            public void run() {
+                if (SettingNameSocketRunnable.this.mLogTextView == null) {
+                    return;
+                }
+                SettingNameSocketRunnable.this.mLogTextView.append(str);
+                SettingNameSocketRunnable.this.mLogTextView.append("\n\n");
+            }
+        });
+    }
+
+    private void callOnStart(final BluetoothDevice bluetoothDevice) {
+        MainThreadExecutor.getInstance().execute(new Runnable() { // from class: client.android.yixiaotong.sdk.runnable.socket.SettingNameSocketRunnable.2
+            @Override // java.lang.Runnable
+            public void run() {
+                if (!SettingNameSocketRunnable.this.isRunning || SettingNameSocketRunnable.this.mSettingNameListener == null) {
+                    return;
+                }
+                SettingNameSocketRunnable.this.mSettingNameListener.onStart(bluetoothDevice);
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void callOnSuccess(final BluetoothDevice bluetoothDevice) {
+        MainThreadExecutor.getInstance().execute(new Runnable() { // from class: client.android.yixiaotong.sdk.runnable.socket.SettingNameSocketRunnable.3
+            @Override // java.lang.Runnable
+            public void run() {
+                try {
+                    if (SettingNameSocketRunnable.this.isRunning && SettingNameSocketRunnable.this.mSettingNameListener != null) {
+                        SettingNameSocketRunnable.this.mSettingNameListener.onSuccess(bluetoothDevice);
+                    }
+                } finally {
+                    SettingNameSocketRunnable.this.stopAndRelease();
+                }
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void callOnFail(final BluetoothDevice bluetoothDevice, final TimeOut timeOut) {
+        MainThreadExecutor.getInstance().execute(new Runnable() { // from class: client.android.yixiaotong.sdk.runnable.socket.SettingNameSocketRunnable.4
+            @Override // java.lang.Runnable
+            public void run() {
+                try {
+                    if (SettingNameSocketRunnable.this.isRunning && SettingNameSocketRunnable.this.mSettingNameListener != null) {
+                        SettingNameSocketRunnable.this.mSettingNameListener.onFail(bluetoothDevice, timeOut);
+                    }
+                } finally {
+                    SettingNameSocketRunnable.this.stopAndRelease();
+                }
+            }
+        });
+    }
+
+    private void callOnBluetoothException(final ClientException clientException) {
+        MainThreadExecutor.getInstance().execute(new Runnable() { // from class: client.android.yixiaotong.sdk.runnable.socket.SettingNameSocketRunnable.5
+            @Override // java.lang.Runnable
+            public void run() {
+                try {
+                    if (SettingNameSocketRunnable.this.isRunning && SettingNameSocketRunnable.this.mSettingNameListener != null) {
+                        SettingNameSocketRunnable.this.mSettingNameListener.onBluetoothException(clientException);
+                    }
+                } finally {
+                    SettingNameSocketRunnable.this.stopAndRelease();
+                }
+            }
+        });
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public void checkTimeOut(TimeOut timeOut, int i) {
+        this.mCurrentCheckTimeOut = timeOut;
+        MainThreadExecutor.getInstance().executeDelayed(new CheckRunnable(timeOut), Math.max(i, 1000));
+    }
+
+    private class CheckRunnable implements Runnable {
+        private TimeOut timeOut;
+
+        public CheckRunnable(TimeOut timeOut) {
+            this.timeOut = timeOut;
+        }
+
+        @Override // java.lang.Runnable
+        public void run() {
+            if (SettingNameSocketRunnable.this.isRunning && this.timeOut == SettingNameSocketRunnable.this.mCurrentCheckTimeOut) {
+                SettingNameSocketRunnable.this.mCurrentHardware.isTimeout = true;
+                SettingNameSocketRunnable settingNameSocketRunnable = SettingNameSocketRunnable.this;
+                settingNameSocketRunnable.callOnFail(settingNameSocketRunnable.mCurrentHardware, this.timeOut);
+            }
+        }
+    }
+}

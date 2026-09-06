@@ -1,0 +1,8 @@
+package com.byazt.zh;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5941276.dex */
+public interface ve {
+    void c(com.byazt.pp.c cVar);
+
+    void c(String str);
+}

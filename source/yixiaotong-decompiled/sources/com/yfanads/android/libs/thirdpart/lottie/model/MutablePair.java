@@ -1,0 +1,39 @@
+package com.yfanads.android.libs.thirdpart.lottie.model;
+
+import androidx.core.util.Pair;
+import com.alipay.sdk.util.i;
+import com.huawei.openalliance.ad.views.PPSLabelView;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\7497320.dex */
+public class MutablePair<T> {
+    T first;
+    T second;
+
+    private static boolean objectsEqual(Object obj, Object obj2) {
+        return obj == obj2 || (obj != null && obj.equals(obj2));
+    }
+
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Pair)) {
+            return false;
+        }
+        Pair pair = (Pair) obj;
+        return objectsEqual(pair.first, this.first) && objectsEqual(pair.second, this.second);
+    }
+
+    public int hashCode() {
+        T t = this.first;
+        int iHashCode = t == null ? 0 : t.hashCode();
+        T t2 = this.second;
+        return iHashCode ^ (t2 != null ? t2.hashCode() : 0);
+    }
+
+    public void set(T t, T t2) {
+        this.first = t;
+        this.second = t2;
+    }
+
+    public String toString() {
+        return "Pair{" + String.valueOf(this.first) + PPSLabelView.Code + String.valueOf(this.second) + i.d;
+    }
+}

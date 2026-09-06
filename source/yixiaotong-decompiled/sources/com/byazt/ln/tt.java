@@ -1,0 +1,10 @@
+package com.byazt.ln;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5766332.dex */
+public interface tt {
+    void c();
+
+    void c(com.byazt.pp.c cVar);
+
+    void tt();
+}

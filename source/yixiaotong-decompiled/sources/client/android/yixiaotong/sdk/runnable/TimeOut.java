@@ -1,0 +1,36 @@
+package client.android.yixiaotong.sdk.runnable;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\6847780.dex */
+public enum TimeOut {
+    Scan,
+    Connect,
+    Discover,
+    SendOpenGetDeviceSettingCommand,
+    SendGetDeviceSettingCommand,
+    SendGetDeviceSetting,
+    WriteQrcode,
+    SendConnect,
+    SendOffConnect,
+    SendConfirm,
+    SendAbort,
+    ReadSetting,
+    WriteSetting,
+    SendCloseGetDeviceSetting,
+    SendAA,
+    SendV3,
+    SendCloseConnect,
+    SendCloseConfirm,
+    SendCloseAbort,
+    SendCloseAA,
+    SendCloseV3,
+    PEIDUI,
+    PEIDUISUCCESS,
+    SendNewCommand,
+    AuthCommand,
+    AuthF0Command,
+    Send08Command,
+    Send02Command,
+    Send01Command,
+    Send06Command,
+    Send07Command
+}

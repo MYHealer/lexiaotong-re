@@ -1,0 +1,12 @@
+package com.byazt.us;
+
+import android.net.Uri;
+import com.bykv.vk.component.ttvideo.player.MediaPlayer;
+
+/* JADX INFO: loaded from: C:\Users\MR\AppData\Local\Temp\yixiaotong-dex\5941276.dex */
+@com.byazt.zqa.c(c = {0, 1, MediaPlayer.MEDIA_PLAYER_OPTION_AUDIO_PROCESSOR_ADDR, 72})
+public class da {
+    public static boolean c(Uri uri) {
+        return com.byazt.ki.c.c(uri);
+    }
+}
