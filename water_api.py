@@ -414,6 +414,147 @@ class LxtWater:
             results[name] = self.query_by_site(site_id)
         return results
 
+    # ----------------------------------------------------------
+    #  自动发现
+    # ----------------------------------------------------------
+    def discover_water_devices(self, max_buildings=20, max_floors=10, max_rooms=20):
+        """
+        自动发现学校内所有预付费水表（typeId=18）
+
+        流程: 学校区域树 → 楼栋 → 楼层 → 房间 → 查设备
+
+        Args:
+            max_buildings: 最多遍历几个楼栋
+            max_floors: 每栋最多几个楼层
+            max_rooms: 每层最多几个房间
+
+        Returns:
+            list[dict]: [{name, site_id, path, machine_id, mac}, ...]
+        """
+        if not self.token:
+            if not self.login():
+                return []
+
+        # 获取学校顶层区域（楼栋列表）
+        try:
+            tree = self._get("/baseDict/site/getLowerAreas",
+                             {"areaId": self.school_id}).get("Data", [])
+        except Exception:
+            return []
+
+        devices = []
+
+        def _walk(node, path="", depth=0, limit_rooms=max_rooms):
+            name = node.get("name", "")
+            children = node.get("childList", [])
+            cur_path = f"{path}/{name}" if path else name
+
+            if not children:
+                # 叶子节点 = 楼层，查房间
+                try:
+                    rooms = self._get("/baseDict/site/getDormitoryOrPublicRoom",
+                                      {"areaId": node["id"]}).get("Data", [])
+                except Exception:
+                    return
+
+                for rm in rooms[:limit_rooms]:
+                    try:
+                        rd = self._post("/mgapp/machine/getMachineByLocation",
+                                        {"siteId": rm["id"], "siteFlag": rm.get("siteFlag", 0),
+                                         "typeId": 18})
+                        for d in (rd.get("Data") or []):
+                            devices.append({
+                                "name": rm.get("name", ""),
+                                "site_id": rm["id"],
+                                "path": f"{cur_path}/{rm.get('name', '')}",
+                                "machine_id": d["machineId"],
+                                "mac": d.get("deviceMac", ""),
+                            })
+                    except Exception:
+                        pass
+            else:
+                for c in children[:max_floors]:
+                    _walk(c, cur_path, depth + 1, limit_rooms)
+
+        for bld in tree[:max_buildings]:
+            _walk(bld)
+
+        return devices
+
+    def discover_my_room(self, building, room_name,
+                         max_buildings=20, max_floors=10):
+        """
+        自动发现自己宿舍的 siteId 和水表信息
+
+        Args:
+            building: 楼栋名关键词（如 "33"、"46"）
+            room_name: 房间名关键词（如 "106"、"416"）
+
+        Returns:
+            dict: {name, site_id, path, machine_id, mac} 或 None
+        """
+        if not self.token:
+            if not self.login():
+                return None
+
+        tree = self._get("/baseDict/site/getLowerAreas",
+                         {"areaId": self.school_id}).get("Data", [])
+
+        # 找到目标楼栋（可能在分类节点下）
+        target_bld = None
+        for cat in tree:
+            if building in cat.get("name", ""):
+                target_bld = cat
+                break
+            for bld in cat.get("childList", []):
+                if building in bld.get("name", ""):
+                    target_bld = bld
+                    break
+            if target_bld:
+                break
+        if not target_bld:
+            return None
+
+        # 遍历楼层找房间
+        def _find(node, path=""):
+            name = node.get("name", "")
+            children = node.get("childList", [])
+            cur_path = f"{path}/{name}" if path else name
+
+            if not children:
+                try:
+                    rooms = self._get("/baseDict/site/getDormitoryOrPublicRoom",
+                                      {"areaId": node["id"]}).get("Data", [])
+                except Exception:
+                    return None
+
+                for rm in rooms:
+                    if room_name in rm.get("name", ""):
+                        try:
+                            rd = self._post("/mgapp/machine/getMachineByLocation",
+                                            {"siteId": rm["id"], "siteFlag": rm.get("siteFlag", 0),
+                                             "typeId": 18})
+                            devs = rd.get("Data") or []
+                            if devs:
+                                return {
+                                    "name": rm.get("name", ""),
+                                    "site_id": rm["id"],
+                                    "path": f"{cur_path}/{rm.get('name', '')}",
+                                    "machine_id": devs[0]["machineId"],
+                                    "mac": devs[0].get("deviceMac", ""),
+                                }
+                        except Exception:
+                            pass
+                return None
+
+            for c in children[:max_floors]:
+                result = _find(c, cur_path)
+                if result:
+                    return result
+            return None
+
+        return _find(target_bld)
+
 
 # ============================================================
 #  CLI
@@ -422,11 +563,14 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 3:
-        print("用法: python water_api.py <手机号> <密码> [siteId]")
+        print("用法:")
+        print("  查询:   python water_api.py <手机号> <密码> [siteId]")
+        print("  发现:   python water_api.py <手机号> <密码> discover [楼栋] [房间]")
         print()
         print("示例:")
-        print("  python water_api.py 192xxxxxxxxx password")
         print("  python water_api.py 192xxxxxxxxx password 660000000001452669")
+        print("  python water_api.py 192xxxxxxxxx password discover 33 106")
+        print("  python water_api.py 192xxxxxxxxx password discover 46 416")
         sys.exit(1)
 
     phone = sys.argv[1]
@@ -439,7 +583,36 @@ if __name__ == "__main__":
         sys.exit(1)
     print("登录成功")
 
-    if len(sys.argv) >= 4:
+    if len(sys.argv) >= 4 and sys.argv[3] == "discover":
+        # 自动发现模式
+        building = sys.argv[4] if len(sys.argv) >= 5 else None
+        room = sys.argv[5] if len(sys.argv) >= 6 else None
+
+        if building and room:
+            result = api.discover_my_room(building, room)
+            if result:
+                print(f"\n  房间: {result['name']}")
+                print(f"  路径: {result['path']}")
+                print(f"  siteId: {result['site_id']}")
+                print(f"  machineId: {result['machine_id']}")
+                print(f"  MAC: {result['mac']}")
+                # 自动查询余额
+                info = api.query_by_site(result['site_id'])
+                if info:
+                    print(f"  余额: {info['balance']:.2f} 元")
+                    print(f"  赠送: {info['gift']:.2f} 元")
+                    print(f"  用水: {info['volume']}")
+            else:
+                print(f"  未找到 {building}栋 {room} 的水表")
+        else:
+            print("发现所有水表中...")
+            devices = api.discover_water_devices()
+            print(f"\n找到 {len(devices)} 个水表:")
+            for d in devices:
+                print(f"  {d['path']}  siteId={d['site_id']}  mid={d['machine_id']}")
+
+    elif len(sys.argv) >= 4:
+        # 直接查询模式
         site_id = sys.argv[3]
         info = api.query_by_site(site_id)
         if info:
